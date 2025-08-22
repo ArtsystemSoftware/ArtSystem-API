@@ -1,0 +1,8 @@
+server=192.168.15.240
+instancename=SQLARTSYSTEM
+user=AS_API
+password=770681789
+port=53655
+access_token_secret=ArtSystemFB77F068C1
+access_token_expires_in=3600
+api_port=41526
