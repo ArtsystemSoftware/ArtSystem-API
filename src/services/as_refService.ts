@@ -36,7 +36,10 @@ class as_refService {
                 FROM AS_CAD..ASPROREF WITH (NOLOCK)
             )
             SELECT * FROM REF 
-             WHERE REFNPAGNUM = @REFNPAGNUM
+                INNER JOIN AS_CAD..ASCADGER GER 
+                ON REF.REFNID_EMB = GER.GERNID_GER 
+                AND GER.GERCTIPCAD = 'PROE'
+                WHERE REFNPAGNUM = @REFNPAGNUM
                /*
                AND REFNID_PRO IN (
                 SELECT PRONID_PRO FROM AS_CAD..ASPROPRO WITH (NOLOCK)
@@ -46,10 +49,11 @@ class as_refService {
             `;
 
         } else {
-            prvcsqlstr = `SELECT * FROM AS_CAD..ASPROREF PRO WITH (NOLOCK) 
+            prvcsqlstr = `SELECT * FROM AS_CAD..ASPROREF REF WITH (NOLOCK) 
                             INNER JOIN AS_CAD..ASCADGER GER 
-                            ON PRO.REFNID_EMB = GER.GERNID_GER 
+                            ON REF.REFNID_EMB = GER.GERNID_GER 
                             ${prvcsqlwhr}
+                            AND GER.GERCTIPCAD = 'PROE'
                             /*
                             AND REFNID_PRO IN (
                                 SELECT PRONID_PRO FROM AS_CAD..ASPROPRO WITH (NOLOCK)
