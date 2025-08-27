@@ -12,7 +12,7 @@ const as_get = as_asyncErrorHandler(async (req: Request, res: Response, next: Ne
 
     let asproref: Partial<Record<keyof ASPROREF, string | number>> = {};
 
-    const allowedFields = new Set<keyof ASPROREF>(['REFNID_REF','REFCCODREF','REFNID_FNC','REFNFNCPRI','REFNNAOVDA']);
+    const allowedFields = new Set<keyof ASPROREF>(['REFNID_REF','REFCCODREF','REFNID_FNC','REFNFNCPRI','REFNNAOVDA', 'REFNID_PRO']);
 
     for (const [key, value] of Object.entries(req.query)) {
         const lowerKey = key.toUpperCase() as keyof ASPROREF;
