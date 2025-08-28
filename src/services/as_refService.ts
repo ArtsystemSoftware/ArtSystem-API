@@ -44,7 +44,8 @@ class as_refService {
             `;
 
         } else {
-            prvcsqlstr = `SELECT * FROM AS_CAD..ASPROREF REF WITH (NOLOCK) 
+            prvcsqlstr = `SELECT * 
+                                  FROM AS_CAD..ASPROREF REF WITH (NOLOCK) 
                             INNER JOIN AS_CAD..ASCADGER GER ON REF.REFNID_EMB = GER.GERNID_GER 
                                                            AND GER.GERCTIPCAD = 'PROE'
                             ${prvcsqlwhr}
