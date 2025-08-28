@@ -40,7 +40,7 @@ const port = process.env.API_PORT;
 
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-process.env.API_VERSION = 'AS_API 2025h27';
+process.env.API_VERSION = 'AS_API 2025h28';
 // process.env.TZ = "America/Sao_Paulo";
 
 console.log(`API version: ${as_api_version()}`);
