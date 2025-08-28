@@ -36,30 +36,19 @@ class as_refService {
                 FROM AS_CAD..ASPROREF WITH (NOLOCK)
             )
             SELECT * FROM REF 
-                INNER JOIN AS_CAD..ASCADGER GER 
-                ON REF.REFNID_EMB = GER.GERNID_GER 
-                AND GER.GERCTIPCAD = 'PROE'
+                INNER JOIN AS_CAD..ASCADGER GER ON REF.REFNID_EMB = GER.GERNID_GER 
+                                               AND GER.GERCTIPCAD = 'PROE'
+
                 WHERE REFNPAGNUM = @REFNPAGNUM
-               /*
-               AND REFNID_PRO IN (
-                SELECT PRONID_PRO FROM AS_CAD..ASPROPRO WITH (NOLOCK)
-                WHERE ISNULL(PROXNAOVDA.query('/PROXNAOVDA/APP').value('.','INT'),0) = 0
-               )
-               */
+               
             `;
 
         } else {
             prvcsqlstr = `SELECT * FROM AS_CAD..ASPROREF REF WITH (NOLOCK) 
-                            INNER JOIN AS_CAD..ASCADGER GER 
-                            ON REF.REFNID_EMB = GER.GERNID_GER 
+                            INNER JOIN AS_CAD..ASCADGER GER ON REF.REFNID_EMB = GER.GERNID_GER 
+                                                           AND GER.GERCTIPCAD = 'PROE'
                             ${prvcsqlwhr}
-                            AND GER.GERCTIPCAD = 'PROE'
-                            /*
-                            AND REFNID_PRO IN (
-                                SELECT PRONID_PRO FROM AS_CAD..ASPROPRO WITH (NOLOCK)
-                                WHERE ISNULL(PROXNAOVDA.query('/PROXNAOVDA/APP').value('.','INT'),0) = 0
-                            )
-                            */
+                            
                             `
         }
             
